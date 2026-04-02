@@ -1,4 +1,3 @@
-/* (c) https://github.com/MontiCore/monticore */
 package parser;
 
 import de.monticore.expressions.expressionsbasis._ast.ASTExpression;
@@ -26,7 +25,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  */
 
 
-public class ParserTest {
+public class IfThenElseTest {
 
   private void printAST(Object node, String indent) {
     if (node == null) return;
@@ -66,7 +65,7 @@ public class ParserTest {
 
   @ParameterizedTest(name = "{index} - {0} does parse w/o errors")
   @ValueSource(strings = {
-      "ifThenElse.sysml"
+      "parts.sysml"
   })
   public void testParsingModels(String modelName) throws IOException {
     Optional<ASTSysMLModel> ast = SysMLv2Mill.parser().parse(MODEL_PATH  + "/" + modelName);

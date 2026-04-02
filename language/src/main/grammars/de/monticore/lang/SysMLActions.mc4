@@ -66,7 +66,7 @@ component grammar SysMLActions
   IfActionUsage implements OccurrenceUsageElement extends ActionUsage =
     Modifier UserDefinedKeyword* "action"?
     SysMLIdentifier? Name? SysMLCardinality? Specialization*
-    "if" guard:Expression
+    "if" guard:Expression "then"?
     (InlineActionUsage | "{" ifElems:SysMLElement* "}")
     ("else" (ActionUsage | "{" elseElems:SysMLElement* "}"))? ;
 
