@@ -37,32 +37,6 @@ public class PrettyPrinterPartsTest {
     parser.setError(false);
   }
 
-  @ParameterizedTest(name = "{index} - {0} does parse w/o errors")
-  @ValueSource(strings = {
-      "parts.sysml"
-  })
-
-  public void testPrettyPrinterFunctionality(String modelName) throws IOException {
-    Optional<ASTSysMLModel> ast = SysMLv2Mill.parser().parse(MODEL_PATH  + "/" + modelName);
-    assertFalse(parser.hasErrors(), "Parsing should not have failed");
-    assertTrue(ast.isPresent(), "The AST should have been created");
-
-    String ppm = SysMLv2Mill.prettyPrint(ast.get(), true);
-    System.out.println(ppm);
-
-    assertNotNull(ppm,
-        "Pretty printer should produce output for: " + modelName);
-    assertFalse(ppm.isEmpty(),
-        "Pretty printed output should not be empty for: " + modelName);
-   // checkForEmptyBodies(ppm, modelName);// a bit stupid i think
-
-    SysMLv2Mill.parser().parse_String(ppm);
-    assertFalse(parser.hasErrors(), "Parsing of printed ast should not have failed");
-    assertTrue(ast.isPresent(), "The AST of printed ast should have been created");
-
-
-  }
-
   @ParameterizedTest(name = "{index} - {0} content is preserved after pretty print")
   @ValueSource(strings = { "parts.sysml" })
   public void testRoundTripSemantic(String modelName) throws IOException {

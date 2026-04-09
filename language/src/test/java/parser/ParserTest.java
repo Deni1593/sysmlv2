@@ -66,7 +66,33 @@ public class ParserTest {
 
   @ParameterizedTest(name = "{index} - {0} does parse w/o errors")
   @ValueSource(strings = {
-      "ifThenElse.sysml"
+      "packages.sysml",
+      "imports.sysml",
+      "ports.sysml",
+      "parts.sysml",
+      "states.sysml",
+      "parallel_states.sysml",
+      "actions.sysml",
+      "items.sysml",
+      "assert.sysml",
+      "constraints.sysml",
+      "requirements.sysml",
+      "streams.sysml",
+      "streamsFilter.sysml",
+      "refinement.sysml",
+      "cardinalities.sysml",
+      "connections.sysml",
+      "collections.sysml",
+      "StateDecomposition1.sysml",
+      "FlowConectionInterfaceExample.sysml",
+      "StateActions.sysml",
+      "ConditionalSuccessionExample-1.sysml",
+      "ifThenElse.sysml",
+      "ifThenElse2.sysml",
+      "ifThenElse3.sysml",
+      "ifThenElse4.sysml",
+      "ifThenElse5.sysml",
+      "ifThenElse6.sysml"
   })
   public void testParsingModels(String modelName) throws IOException {
     Optional<ASTSysMLModel> ast = SysMLv2Mill.parser().parse(MODEL_PATH  + "/" + modelName);
@@ -80,7 +106,5 @@ public class ParserTest {
     for (ASTSysMLElement element : model.getSysMLElementList()) {
       System.out.println(element);
     }
-
-
   }
 }

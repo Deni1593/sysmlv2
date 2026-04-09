@@ -31,3 +31,6 @@ part tank {
   port fluidOut: ~Fluid;
 
 }
+
+ connect fluidIn to fluidOut;
+ connect fluidIn.fluidFlow to fluidOut.fluidFlow;
